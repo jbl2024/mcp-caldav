@@ -1,0 +1,39 @@
+version: 1
+
+settings:
+  timezone: Europe/Paris
+  request_timeout_seconds: 20
+  max_range_days: 366
+  max_results: 500
+  max_parallel_calendars: 4
+  max_text_length: 4000
+  verify_tls: true
+  require_https: true
+
+  # Strongly recommended: every configured calendar URL must stay under
+  # one of these prefixes. This prevents the MCP process from becoming
+  # a generic SSRF-capable DAV client if its configuration is altered.
+  allowed_url_prefixes:
+    - "https://caldav.example.test/calendars/"
+
+credentials:
+  example:
+    username_env: CALDAV_USERNAME
+    password_env: CALDAV_PASSWORD
+    auth_type: basic
+
+calendars:
+  - name: me
+    label: "My calendar"
+    url: "https://caldav.example.test/calendars/calendar-user/personal/"
+    credentials: example
+
+  - name: colleague
+    label: "Team"
+    url: "https://caldav.example.test/calendars/team/shared/"
+    credentials: example
+
+  - name: meeting-room
+    label: "Meeting room"
+    url: "https://caldav.example.test/calendars/rooms/room-123/"
+    credentials: example
