@@ -170,6 +170,20 @@ make test
 uv run ruff check .
 ```
 
+## Releases
+
+Run `make release` from a clean branch to run the test suite, update
+`CHANGELOG.md`, create an annotated release tag, and push the release commit
+and tag to `origin` in one atomic publication.
+
+Tags use the current date (`YYYYMMDD`). When a tag for that date already
+exists locally or on `origin`, the command chooses the next available suffix,
+such as `YYYYMMDD-1`. Changelog entries are generated from commit subjects
+since the preceding dated release tag.
+
+The default remote is `origin`. To publish to a different configured remote,
+set `RELEASE_REMOTE`, for example `RELEASE_REMOTE=upstream make release`.
+
 For the MCP Inspector:
 
 ```bash

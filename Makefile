@@ -1,4 +1,4 @@
-.PHONY: build run test
+.PHONY: build run test release
 
 build:
 	uv build
@@ -8,3 +8,6 @@ run:
 
 test:
 	uv run pytest
+
+release:
+	sh scripts/release.sh
